@@ -9,10 +9,9 @@ public class CommandQuerySeparation {
     private final SalaryService salaryService;
 
     public String changingSalary(Employee employee) {
-        salaryService.changeSalary(employee, 100);
-        salaryService.changeSalary(employee, 100);
 
-        int x =  salaryService.changeSalary(employee, 100);
+        salaryService.changeSalary(employee, 100);
+        int x = salaryService.getSalaryDelta(employee, 100);
 
         return "Logic with " + x;
     }
@@ -20,9 +19,12 @@ public class CommandQuerySeparation {
 
 
 class SalaryService {
-    public int changeSalary(Employee employee, int x) {
+    public void changeSalary(Employee employee, int x) {
         //do stuff
         employee.setSalary(employee.getSalary() + x);
+    }
+
+    public int getSalaryDelta(Employee employee, int x) {
         return x+200;
     }
 }

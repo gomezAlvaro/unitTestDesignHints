@@ -3,14 +3,17 @@ package immutable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.With;
 
 @RequiredArgsConstructor
 public class ImmutableObjects {
     private final SpeedCalculator speedCalculator;
 
     public int calculateIt(Dog dog) {
-        speedCalculator.calculateSpeed(dog);
+        int speed = speedCalculator.calculateSpeed(dog);
+        dog = dog.withSpeed(speed);
         //do stuff with new dog speed
+
         System.out.println(dog.getSpeed());
         return dog.getSpeed();
     }
@@ -20,13 +23,14 @@ public class ImmutableObjects {
 @AllArgsConstructor
 class Dog {
     private String name;
-    //@With
-    private int speed;
+    @With
+    final private int speed;
 }
 
 class SpeedCalculator {
-    public void calculateSpeed(Dog dog) {
+    public int calculateSpeed(Dog dog) {
         //do some logic
-        dog.setSpeed(10);
+        //check by age and race
+        return 10;
     }
 }

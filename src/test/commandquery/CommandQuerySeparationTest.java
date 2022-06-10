@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import commandquery.CommandQuerySeparation;
 import commandquery.Employee;
 import commandquery.SalaryService;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,10 +27,11 @@ class CommandQuerySeparationTest {
     public void test_changingSalary() {
         Employee employee = new Employee("Mark", 1000);
 
-        when(salaryService.changeSalary(employee, 100)).thenReturn(10);
+        when(salaryService.getSalaryDelta(employee, 100)).thenReturn(10);
         String salaryLogic = commandQuerySeparation.changingSalary(employee);
-        //verify(salaryService).changeSalary(employee, 100);
+        verify(salaryService).changeSalary(employee, 100);
 
         assertEquals("Logic with 10", salaryLogic);
     }
+
 }

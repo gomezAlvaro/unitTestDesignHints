@@ -13,6 +13,12 @@ public class FixtureCreep {
         //do complex stuff requiring many tests
     }
 
+}
+
+@AllArgsConstructor
+class FixtureCreepProduct {
+    private final Dependency dependency;
+
     public void changeProduct() {
         if (!dependency.isProduct()) {
             throw new IllegalArgumentException();
