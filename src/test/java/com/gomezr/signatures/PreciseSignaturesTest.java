@@ -9,7 +9,9 @@ class PreciseSignaturesTest {
 
     @Test
     public void test_emailContent() {
-        String emailContent = PreciseSignatures.getEmailContent("This is a test");
+        Alert alert = new Alert();
+        alert.setMessage("This is a test");
+        String emailContent = PreciseSignatures.getEmailContent(alert);
 
         assertEquals("There is an active alert: This is a test", emailContent);
     }

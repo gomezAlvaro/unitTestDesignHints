@@ -2,7 +2,7 @@ package com.gomezr.immutable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doAnswer;
 
 
 import org.junit.jupiter.api.Test;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 
 @ExtendWith(MockitoExtension.class)
 class ImmutableObjectsTest {
@@ -20,7 +21,11 @@ class ImmutableObjectsTest {
 
     @Test
     public void test_calculateIt() {
-        when(speedCalculator.calculateSpeed(any())).thenReturn(33);
+        doAnswer(invocation -> {
+            Dog dog = (Dog) invocation.getArguments()[0];
+            dog.setSpeed(33);
+            return dog;
+        }).when(speedCalculator).calculateSpeed(any());
 
         Dog dog = new Dog("Bobby", 0);
         int speed = immutableObjects.calculateIt(dog);

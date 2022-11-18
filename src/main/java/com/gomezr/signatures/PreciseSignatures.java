@@ -3,8 +3,8 @@ package com.gomezr.signatures;
 import lombok.Data;
 
 public class PreciseSignatures {
-    public static String getEmailContent(String message) {
-        return "There is an active alert: " + message;
+    public static String getEmailContent(Alert alert) {
+        return "There is an active alert: " + alert.getMessage();
     }
 }
 

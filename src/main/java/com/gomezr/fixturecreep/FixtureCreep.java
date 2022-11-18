@@ -2,6 +2,7 @@ package com.gomezr.fixturecreep;
 
 import lombok.AllArgsConstructor;
 
+
 @AllArgsConstructor
 public class FixtureCreep {
     private final Dependency dependency;
@@ -12,12 +13,6 @@ public class FixtureCreep {
         }
         //do complex stuff requiring many tests
     }
-
-}
-
-@AllArgsConstructor
-class FixtureCreepProduct {
-    private final Dependency dependency;
 
     public void changeProduct() {
         if (!dependency.isProduct()) {
